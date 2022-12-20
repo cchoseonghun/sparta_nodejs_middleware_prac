@@ -68,6 +68,11 @@ router.post('/auth', async (req, res) => {
   const token = jwt.sign({ userId: user.userId }, 'SeongHun');  
 
   res.status(200).json({ token });
+});
+
+const authMiddleware = require('./middlewares/auth-middleware');
+
+router.get('/users/me', authMiddleware, async (req, res) => {
 
 })
 
